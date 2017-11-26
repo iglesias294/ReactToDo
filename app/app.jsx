@@ -7,8 +7,9 @@ $(document).foundation();
 //app css
 require('applicationStyles')
 
+var TodoApp = require('TodoApp');
 
 ReactDOM.render(
-  <p>Boilerplate 3 Router</p>,
+  <TodoApp />,
   document.getElementById("app")
 );
