@@ -4,7 +4,9 @@ var AddTodo = React.createClass({
     onSubmit: function(e) {
         e.preventDefault();
         if (this.refs.newtodo.value.length > 0) {
-            this.props.onAddTodo(this.refs.newtodo.value)
+            
+            this.props.onAddTodo(this.refs.newtodo.value);
+            this.refs.newtodo.value = '';
         }
     },
     render: function() {
