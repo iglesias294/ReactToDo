@@ -35,15 +35,14 @@ describe('reducers', () => {
             expect(res.length).toEqual(1);
             expect(res[0].text).toEqual(action.text);
         });
-        it('should toggle completed todos', () => {
+        it('should toggle todo', () => {
             var action = {
                 type: 'TOGGLE_TODO',
                 completed: true
             };
 
             var res = reducers.todosReducer(df([]), df(action));
-
-            
+            // to do 
         })
     })
 });

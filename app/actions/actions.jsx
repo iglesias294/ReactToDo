@@ -5,7 +5,7 @@ export var setSearchText = (searchText) => {
     }
 };
 
-export var addTodo = () => {
+export var addTodo = (text) => {
     return {
         type: 'ADD_TODO',
         text
