@@ -1,6 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var {Provider} = require('react-redux')
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
+
+
+
 // Load Foundation
 require('style!css!foundation-sites/dist/foundation.min.css')
 $(document).foundation();
@@ -20,6 +24,8 @@ store.dispatch(actions.setSearchText('yard'));
 store.dispatch(actions.toggleShowCompleted());
 
 ReactDOM.render(
-  <TodoApp />,
+  <Provider store={store}>
+    <TodoApp />
+  </Provider>,
   document.getElementById("app")
 );
