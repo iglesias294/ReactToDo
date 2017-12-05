@@ -10,7 +10,7 @@ var AddTodo = React.createClass({
         var {dispatch} = this.props;
         if (todoText.length > 0) {
             this.refs.newtodo.value = '';
-            dispatch(actions.addTodo(todoText));
+            dispatch(actions.startAddTodo(todoText));
             
             
         }
