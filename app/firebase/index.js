@@ -9,7 +9,7 @@ try {
         storageBucket: "arturo-todo-app.appspot.com",
         messagingSenderId: "456235371118"
       };
-    
+
       firebase.initializeApp(config);
 } catch (e) {
 
