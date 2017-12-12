@@ -3,3 +3,4 @@ example-arrow-functions.js
 example-promise.js
 app/components/ErrorModal.jsx
 firebase/index.js
+public/bundle.js
