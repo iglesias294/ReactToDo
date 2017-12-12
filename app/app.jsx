@@ -11,10 +11,14 @@ $(document).foundation();
 //app css
 require('applicationStyles')
 
-var TodoApp = require('TodoApp');
+//var TodoApp = require('TodoApp');
+import TodoApp from 'TodoApp';
 var actions = require('actions');
 var store = require('configureStore').configure();
 var TodoAPI = require('TodoAPI');
+import Login from 'Login';
+
+
 
 // store.subscribe(() => {
 //   var state = store.getState();
@@ -31,9 +35,16 @@ var TodoAPI = require('TodoAPI');
 store.dispatch(actions.startAddTodos());
 
 
+
 ReactDOM.render(
   <Provider store={store}>
-    <TodoApp />
+    <Router history={hashHistory}>
+      {/* Component that wraps all others */}
+      <Route path="/">
+        <Route path="todos" component={TodoApp}/>
+        <IndexRoute component={Login}/>
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById("app")
 );
