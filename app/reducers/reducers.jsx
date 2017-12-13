@@ -44,8 +44,8 @@ export var todosReducer = (state = [], action) => {
                     ...state,
                     ...action.todos
                 ];
-
-
+        case 'LOGOUT':
+          return [];
         default:
             return state;
     }
@@ -58,7 +58,8 @@ export var authReducer = (state = {}, action) => {
         uid: action.uid
       };
     case 'LOGOUT':
-      return {};
+      return {
+      };
     default:
       return state;
   }
