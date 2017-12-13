@@ -1,9 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var {Provider} = require('react-redux')
-var {Route, Router, IndexRoute, hashHistory} = require('react-router');
-
-//import './../playground/firebase/index';
+var {hashHistory} = require('react-router');
+import router from 'app/router/';
 
 // Load Foundation
 require('style!css!foundation-sites/dist/foundation.min.css')
@@ -11,40 +10,30 @@ $(document).foundation();
 //app css
 require('applicationStyles')
 
-//var TodoApp = require('TodoApp');
-import TodoApp from 'TodoApp';
+
+//import TodoApp from 'TodoApp';
 var actions = require('actions');
 var store = require('configureStore').configure();
-var TodoAPI = require('TodoAPI');
-import Login from 'Login';
+//var TodoAPI = require('TodoAPI');
+//import Login from 'Login';
+import firebase from 'app/firebase/';
 
-
-
-// store.subscribe(() => {
-//   var state = store.getState();
-//
-//   console.log('New State', store.getState());
-//
-//   TodoAPI.setTodos(state.todos);
-//
-// });
-//
-// var initialTodos = TodoAPI.getTodos();
-// store.dispatch(actions.addTodos(initialTodos));
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    hashHistory.push('/todos');
+  } else {
+    hashHistory.push('/');
+  }
+})
 
 store.dispatch(actions.startAddTodos());
 
+//Public private pages
 
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>
-      {/* Component that wraps all others */}
-      <Route path="/">
-        <Route path="todos" component={TodoApp}/>
-        <IndexRoute component={Login}/>
-      </Route>
-    </Router>
+    {router}
   </Provider>,
   document.getElementById("app")
 );
